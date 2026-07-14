@@ -11,3 +11,5 @@ dist/
 
 # Env
 .env
+.DS_Store
+.vscode/
