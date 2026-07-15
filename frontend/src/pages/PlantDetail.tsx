@@ -2,7 +2,7 @@
 import { useState , useEffect } from "react";
 import { useParams,useNavigate } from "react-router-dom";
 import api from "../api/client";
-import { Plant } from "../types";
+import type { Plant } from "../types";
 import { useAuth } from "../context/Authcontext";
 import { useCart } from "../context/CartContext";
 

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Plant } from "../types";
+import type { Plant } from "../types";
 
 
 export default function PlantCard({ plant }: { plant: Plant }) {
