@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import api  from "../api/client";
-import { Plant } from "../types";
+import type { Plant } from "../types";
 import PlantCard from "../components/PlantCard";
 
 export default function Home() {

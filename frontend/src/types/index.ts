@@ -5,7 +5,7 @@ export interface Plant{
     price : number;
     stock : number;
     description : string;
-    img_url : string;
+    image_url : string;
 
 }
 export interface User{
@@ -30,5 +30,5 @@ export interface Order{
         id : number;
         total : number;
         status : string;
-        item : OrderItem[];
+        items : OrderItem[];
 }
