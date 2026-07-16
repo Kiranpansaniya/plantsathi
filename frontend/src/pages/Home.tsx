@@ -5,7 +5,7 @@ import PlantCard from "../components/PlantCard";
 
 export default function Home() {
     const [ plants, setPlants] = useState<Plant[]>([]);
-    const [search, setSearch] = useState(" ");
+    const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
