@@ -23,9 +23,13 @@ export default function PlantDetail(){
             navigate("/login")
             return;
         }
-        
+        try {
         await addToCart(Plant!.id,quantity);
         alert("Added To Cart!");
+        }catch (err : any){
+            console.error("Add to cart error:", err);
+            alert(err.response?.data?.detail || "Failed toadd to cart");
+        }
     }
 
     if (!Plant) return <p style={{ padding : "2rem"}}>Loading...</p>;
@@ -43,7 +47,7 @@ export default function PlantDetail(){
             {Plant.stock > 0 && (
                 <div style={{ display : "flex", gap : "1rem",alignItems : "center", marginTop : "1rem"}}>
                     
-                    <input type="number" min={Plant.stock} value={quantity}
+                    <input type="number" min = {1} max={Plant.stock} value={quantity}
                     onChange={(e) => setQuantity(Number(e.target.value))}
                     style={{ width : "60px", padding : "0.4rem"}}/>
 
