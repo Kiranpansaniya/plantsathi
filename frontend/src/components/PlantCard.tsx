@@ -4,7 +4,7 @@ import type { Plant } from "../types";
 
 export default function PlantCard({ plant }: { plant: Plant }) {
     return (
-        <Link to= {'/plants/${plant.id}'} style={styles.card}>
+        <Link to= {`/plants/${plant.id}`} style={styles.card}>
             <div style={styles.imagePlaceholder}>🪴</div>
             <h3>{plant.name}</h3>
             <p style={styles.category}>{plant.category}</p>

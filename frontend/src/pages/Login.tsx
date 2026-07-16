@@ -27,9 +27,9 @@ export default function Login() {
         <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit" style={buttonStyle}>Login</button>
+        <button type="submit" style={buttonStyle}>  Login  </button>
       </form>
-      <p>No account? <Link to="/signup">Signup</Link></p>
+      <p>No account? <Link to="/signup">  Signup  </Link></p>
     </div>
   );
 }

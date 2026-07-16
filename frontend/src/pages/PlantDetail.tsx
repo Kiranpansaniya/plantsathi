@@ -3,7 +3,7 @@ import { useState , useEffect } from "react";
 import { useParams,useNavigate } from "react-router-dom";
 import api from "../api/client";
 import type { Plant } from "../types";
-import { useAuth } from "../context/Authcontext";
+import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
 
 export default function PlantDetail(){
@@ -15,7 +15,7 @@ export default function PlantDetail(){
     const navigate = useNavigate();
 
     useEffect(() => {
-        api.get('/plants/${id}'). then((res) => setPlant(res.data));
+        api.get(`/plants/${id}`). then((res) => setPlant(res.data));
     },[id]);
 
     async function handleAddToCart() {
