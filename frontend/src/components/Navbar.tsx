@@ -15,17 +15,17 @@ export default function Navbar(){
         <nav style={styles.nav}>
             <Link to="/" style={styles.logo}>🪴PlantSaathi</Link>
             <div style={styles.link}>
-                <Link to ="/" style={styles.link}>Home</Link>
+                <Link to ="/" style={styles.link}>   Home  </Link>
                 {user?(
                     <>
                     <Link to="/cart" style={styles.link}>Cart ({items.length})</Link>
                     <Link to="/orders" style={styles.link}>Orders</Link>
                     <span style={styles.link}>Hi,{user.name}</span>
-                    <button onClick={handleLogout} style={styles.button}>Logout</button>
+                    <button onClick={handleLogout} style={styles.button}>  Logout   </button>
                     </>
                 ):(<>
-                <Link to="/login" style={styles.link}>Login</Link>
-                <Link to="/signup" style={styles.link}>Signup</Link>
+                <Link to="/login" style={styles.link}>   Login   </Link>
+                <Link to="/signup" style={styles.link}>  Signup   </Link>
                 </>
             )}
             </div>
