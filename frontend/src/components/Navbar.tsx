@@ -14,7 +14,7 @@ export default function Navbar(){
     return(
         <nav style={styles.nav}>
             <Link to="/" style={styles.logo}>🪴PlantSaathi</Link>
-            <div style={styles.link}>
+            <div style={styles.links}>
                 <Link to ="/" style={styles.link}>Home</Link>
                 {user?(
                     <>
