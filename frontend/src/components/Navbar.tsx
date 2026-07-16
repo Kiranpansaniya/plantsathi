@@ -14,7 +14,7 @@ export default function Navbar(){
     return(
         <nav style={styles.nav}>
             <Link to="/" style={styles.logo}>🪴PlantSaathi</Link>
-            <div style={styles.link}>
+            <div style={styles.links}>
                 <Link to ="/" style={styles.link}>Home</Link>
                 {user?(
                     <>
@@ -42,7 +42,7 @@ const styles : {[key:string]:React.CSSProperties}={
         color:"white",
     },
     logo:{fontSize:"1.4rem",fontWeight:"bold",color:"white",textDecoration:"none"},
-    links:{display:"flex",gap:"1.2rem",alignItems:"center"},
+    links:{display:"flex",gap:"2rem",alignItems:"center"},
     link:{color:"white",textDecoration:"none"},
     button : {
         background:"white",
