@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey,Boolean
+from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 
 engine = create_engine("sqlite:///./plants.db", connect_args={"check_same_thread": False})
@@ -13,8 +13,7 @@ class Customer(Base):
     password_hash = Column(String, nullable=False)
     cart_items = relationship("CartItem", back_populates="user")
     orders = relationship("Order", back_populates="user")
-    is_admin = Column(Boolean,default= False)
-
+    
 class Plant(Base):
     __tablename__ = "plants"
     id = Column(Integer, primary_key=True)

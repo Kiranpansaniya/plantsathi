@@ -22,12 +22,6 @@ app.add_middleware(
 )
 
 
-def verify_admin(current_user: Customer = Depends(get_current_user)):
-    if not current_user.is_admin:
-        raise HTTPException(status_code=403, detail="Admin access required")
-    return current_user
-
-
 # ==================== AUTH ====================
 
 @app.post("/api/auth/signup", response_model=TokenResponse)
@@ -65,7 +59,7 @@ def get_me(current_user: Customer = Depends(get_current_user)):
     return current_user
 
 
-# ==================== PLANTS (Public) ====================
+# ==================== PLANTS (Public - view only) ====================
 
 @app.get("/api/plants", response_model=List[PlantOut])
 def get_plants(db: Session = Depends(get_db)):
@@ -80,10 +74,10 @@ def get_plant(plant_id: int, db: Session = Depends(get_db)):
     return plant
 
 
-# ==================== PLANTS (Admin only) ====================
+# ==================== PLANTS (Login required - any user) ====================
 
 @app.post("/api/plants", response_model=PlantOut)
-def create_plant(plant_data: PlantCreate, db: Session = Depends(get_db), admin: Customer = Depends(verify_admin)):
+def create_plant(plant_data: PlantCreate, db: Session = Depends(get_db), current_user: Customer = Depends(get_current_user)):
     new_plant = Plant(**plant_data.model_dump())
     db.add(new_plant)
     db.commit()
@@ -92,7 +86,7 @@ def create_plant(plant_data: PlantCreate, db: Session = Depends(get_db), admin: 
 
 
 @app.put("/api/plants/{plant_id}", response_model=PlantOut)
-def update_plant(plant_id: int, plant_data: PlantUpdate, db: Session = Depends(get_db), admin: Customer = Depends(verify_admin)):
+def update_plant(plant_id: int, plant_data: PlantUpdate, db: Session = Depends(get_db), current_user: Customer = Depends(get_current_user)):
     plant = db.query(Plant).filter(Plant.id == plant_id).first()
     if plant is None:
         raise HTTPException(status_code=404, detail="Plant not found")
@@ -107,7 +101,7 @@ def update_plant(plant_id: int, plant_data: PlantUpdate, db: Session = Depends(g
 
 
 @app.delete("/api/plants/{plant_id}")
-def delete_plant(plant_id: int, db: Session = Depends(get_db), admin: Customer = Depends(verify_admin)):
+def delete_plant(plant_id: int, db: Session = Depends(get_db), current_user: Customer = Depends(get_current_user)):
     plant = db.query(Plant).filter(Plant.id == plant_id).first()
     if plant is None:
         raise HTTPException(status_code=404, detail="Plant not found")
